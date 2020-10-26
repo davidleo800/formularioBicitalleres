@@ -1,0 +1,103 @@
+<h1>Bicitaller <small>Nombre Bicitaller</small></h1>
+<hr>
+
+<div class="row text-right">
+<div class="col">
+    <button class="btn btn-danger"
+        routerLink="/bicitalleres">
+        <i class="fa fa-arrow-left"></i>
+        regresar
+    </button>
+</div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <form (ngSubmit)="guardar(f)" 
+        #f="ngForm">
+            
+            <!-- <div class="form-group">
+                <label >ID</label>
+                <input type="text"
+                        class="form-control"
+                        disabled="disabled"
+                        placeholder="ID"
+                        [(ngModel)]="bicitaller.id"
+                        name="id">
+                        
+                        <small>Este campo es autogenerado</small>
+            </div> -->
+            <div class="form-group">
+                <label >Referencia</label>
+                <input type="text"
+                        class="form-control"
+                        placeholder="Punto de Referencia del Bicitaller"
+                        (ngModel)="bicitaller.properties.referencia"
+                        name="referencia"
+                        required>
+            </div>
+            <div class="form-group">
+                <label >Horario</label>
+                <input type="text"
+                        class="form-control"
+                        placeholder="Horarios de atención"
+                        (ngModel)="bicitaller.properties.horarioSemana"
+                        name="horarioSemana"
+                        required>
+            </div>
+            <div class="form-group">
+                <label >Horario Domingo</label>
+                <input type="text"
+                        class="form-control"
+                        placeholder="Horarios de atención los dias Domingo"
+                        (ngModel)="bicitaller.properties.horarioDomingo"
+                        name="horarioDomingo"
+                        required>
+            </div>
+            <div class="form-group">
+                <label >Servicios</label>
+                <input type="text"
+                        class="form-control"
+                        placeholder="Servicios que prestan"
+                        (ngModel)="bicitaller.properties.servicios"
+                        name="servicios"
+                        required
+                        >
+            </div>
+            <div class="form-group">
+                <label >Telefono</label>
+                <input type="text"
+                        class="form-control"
+                        placeholder="Telefono"
+                        (ngModel)="bicitaller.properties.telefono"
+                        name="telefono"
+                        >
+            </div>
+            <div class="form-group">
+                <label >Latitud</label>
+                <input type="text"
+                        class="form-control"
+                        placeholder="Latitud"
+                        (ngModel)="bicitaller.geometry.coordinates.coordinates[0]"
+                        name="latitud"
+                        required>
+            </div>
+            <div class="form-group">
+                <label >Longitud</label>
+                <input type="text"
+                        class="form-control"
+                        placeholder="Longitud"
+                        (ngModel)="bicitaller.geometry.coordinates.coordinates[1]"
+                        name="longitud"
+                        required>
+            </div>
+            <hr>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary w-25">
+                    <i class="fa fa-save"></i>
+                    Guardar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

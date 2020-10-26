@@ -1,0 +1,56 @@
+<h1>Listado Bicitalleres</h1>
+<hr>
+
+<div class="row">
+    <div class="col text-right">
+        <button class="btn btn-primary"
+        routerLink="/bicitaller/nuevo">
+            <i class="fa fa-plus"></i>
+            Agregar
+        </button>
+    </div>
+
+</div>
+
+<table class="table mt-3">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Punto Referencia</th>
+        <th scope="col">Horario Semana</th>
+        <th scope="col">Horario Domingo</th>
+        <th scope="col">Servicios</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Latitud</th>
+        <th scope="col">Longitud</th>
+        <th scope="col">Tools</th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bicitaller of bicitalleres; let i = index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{bicitaller.referencia}}</td>
+        <td>{{bicitaller.horarioSemana}}</td>
+        <td>{{bicitaller.horarioDomingo}}</td>
+        <td>{{bicitaller.servicios}}</td>
+        <td>{{bicitaller.telefono}}</td>
+        <td>{{bicitaller.latitud}}</td>
+        <td>{{bicitaller.longitud}}</td>
+        <td>
+          <button class="btn btn-info mr-1"
+          [routerLink]="['/bicitaller',bicitaller.id]">
+            <i class="fa fa-pen"></i>
+          </button>
+          <button class="btn btn-info mr-1"
+          (click)="borrarBicitaller(bicitaller, i )">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+       
+      </tr>
+    </tbody>
+  </table>
+  
+  
