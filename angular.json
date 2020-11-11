@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "gregarioPlataforma"
+    }
+  },
+  "defaultProject": "gregarioPlataforma",
+  "cli": {
+    "analytics": "a9f4bdc8-71dc-42a1-9de6-f8c29b12d94a"
+  }
 }

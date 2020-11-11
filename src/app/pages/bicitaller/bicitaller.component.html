@@ -12,7 +12,7 @@
 </div>
 
 <div class="row">
-    <div class="col">
+    <div class="col" >
         <form (ngSubmit)="guardar(f)" 
         #f="ngForm">
             
@@ -32,16 +32,16 @@
                 <input type="text"
                         class="form-control"
                         placeholder="Punto de Referencia del Bicitaller"
-                        (ngModel)="bicitaller.properties.referencia"
+                        [(ngModel)]="propiedades.referencia"
                         name="referencia"
-                        required>
+                        ngModel required>
             </div>
             <div class="form-group">
                 <label >Horario</label>
                 <input type="text"
                         class="form-control"
                         placeholder="Horarios de atención"
-                        (ngModel)="bicitaller.properties.horarioSemana"
+                        [(ngModel)]="propiedades.horarioSemana"
                         name="horarioSemana"
                         required>
             </div>
@@ -50,7 +50,7 @@
                 <input type="text"
                         class="form-control"
                         placeholder="Horarios de atención los dias Domingo"
-                        (ngModel)="bicitaller.properties.horarioDomingo"
+                        [(ngModel)]="propiedades.horarioDomingo"
                         name="horarioDomingo"
                         required>
             </div>
@@ -59,7 +59,7 @@
                 <input type="text"
                         class="form-control"
                         placeholder="Servicios que prestan"
-                        (ngModel)="bicitaller.properties.servicios"
+                        [(ngModel)]="propiedades.servicios"
                         name="servicios"
                         required
                         >
@@ -69,25 +69,25 @@
                 <input type="text"
                         class="form-control"
                         placeholder="Telefono"
-                        (ngModel)="bicitaller.properties.telefono"
+                        [(ngModel)]="propiedades.telefono"
                         name="telefono"
                         >
             </div>
             <div class="form-group">
                 <label >Latitud</label>
-                <input type="text"
+                <input type="number"
                         class="form-control"
                         placeholder="Latitud"
-                        (ngModel)="bicitaller.geometry.coordinates.coordinates[0]"
+                        [(ngModel)]="geom.coordinates[1]"
                         name="latitud"
                         required>
             </div>
             <div class="form-group">
                 <label >Longitud</label>
-                <input type="text"
+                <input type="number"
                         class="form-control"
                         placeholder="Longitud"
-                        (ngModel)="bicitaller.geometry.coordinates.coordinates[1]"
+                        [(ngModel)]="geom.coordinates[0]"
                         name="longitud"
                         required>
             </div>

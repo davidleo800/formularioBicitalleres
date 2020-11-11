@@ -16,27 +16,27 @@ export class BicitallerModel{
     geometry: geometry;
     properties: properties;
     type: string;
-    constructor(
-        type="FeatureCollection"
-    ){};
-
+    constructor(){
+        this.type = 'Feature';
+    }
 }
 
 export class geometry {
-    coordinates: coordinates;
     type: string;
+    coordinates: [number, number];
+    constructor(){
+        this.type = 'Point';
+        this.coordinates = [0, 0];
+    }
 
-}
-
-export class coordinates {
-    coordinates: [string,string];
 }
 
 export class properties {
     // id:string;
-    referencia:string;
-    horarioSemana:string;
-    horarioDomingo:string;
-    servicios:string;
-    telefono:string;
+    referencia: string;
+    horarioSemana: string;
+    horarioDomingo: string;
+    servicios: string;
+    telefono: string;
+
 }

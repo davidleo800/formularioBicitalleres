@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {BicitalleresService} from '../../services/bicitalleres.service'
 import { BicitallerModel } from 'src/app/Models/bicitaller.model';
 import Swal from 'sweetalert2';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-bicitalleres',
@@ -11,17 +12,18 @@ import Swal from 'sweetalert2';
 })
 export class BicitalleresComponent implements OnInit {
 
-  bicitalleres: BicitallerModel[]=[];
+  bicitalleres: BicitallerModel;
 
-  constructor(private bicitalleresService:BicitalleresService) { }
+  constructor(private bicitalleresService: BicitalleresService) { }
 
   ngOnInit() {
     this.bicitalleresService.obtenerBicitalleres()
-    .subscribe(resp =>{
+      .subscribe( (resp: any) => {
+
       console.log(resp);
-      this.bicitalleres=resp;
-    })
-    
+      this.bicitalleres = resp;
+    });
+
   }
 
   borrarBicitaller(bicitaller:BicitallerModel, i:number){
@@ -34,7 +36,7 @@ export class BicitalleresComponent implements OnInit {
       showCancelButton:true
     }).then(resp =>{
       if(resp.value){
-        this.bicitalleres.splice(i,1);
+        // this.bicitalleres.splice(i,1);
         // this.bicitalleresService.borrarBicitaller(bicitaller.properties.id).subscribe();
       }
     })

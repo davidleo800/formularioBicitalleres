@@ -29,15 +29,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let bicitaller of bicitalleres; let i = index">
+      <tr *ngFor="let bicitaller of bicitalleres ; let i = index ">
         <th scope="row">{{i+1}}</th>
-        <td>{{bicitaller.referencia}}</td>
-        <td>{{bicitaller.horarioSemana}}</td>
-        <td>{{bicitaller.horarioDomingo}}</td>
-        <td>{{bicitaller.servicios}}</td>
-        <td>{{bicitaller.telefono}}</td>
-        <td>{{bicitaller.latitud}}</td>
-        <td>{{bicitaller.longitud}}</td>
+        <td>{{ bicitalleres[i].properties?.referencia }}</td>
+        <td>{{bicitalleres[i].properties?.horarioSemana}}</td>
+        <td>{{bicitalleres[i].properties?.horarioDomingo}}</td>
+        <td>{{bicitalleres[i].properties?.servicios}}</td>
+        <td>{{bicitalleres[i].properties?.telefono}}</td>
+        <td>{{bicitalleres[i].geometry.coordinates[1]}}</td>
+        <td>{{bicitalleres[i].geometry.coordinates[0]}}</td>
         <td>
           <button class="btn btn-info mr-1"
           [routerLink]="['/bicitaller',bicitaller.id]">

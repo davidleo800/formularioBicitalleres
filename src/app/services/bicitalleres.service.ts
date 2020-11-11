@@ -7,13 +7,13 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class BicitalleresService {
-private url = 'https://gregario-ee3cf.firebaseio.com/bicitalleres/features';
+private url = 'https://gregario-ee3cf.firebaseio.com';
   constructor(private http: HttpClient) { }
 
 
-  crearBicitaller(bicitaller:BicitallerModel){
+  crearBicitaller(bicitaller: BicitallerModel){
     console.log(bicitaller);
-    return this.http.post(`${this.url}/bicitalleres.json`,bicitaller);
+    return this.http.post(`${this.url}/bicitalleres/features.json`, bicitaller);
     // .pipe(
     //   map((resp:any)=>{
     //     console.log(resp);
@@ -25,19 +25,17 @@ private url = 'https://gregario-ee3cf.firebaseio.com/bicitalleres/features';
     // )
   }
 
-  editarBicitaller(bicitaller:BicitallerModel){
+  editarBicitaller(bicitaller: BicitallerModel){
     const bicitallerTemp={
       ...bicitaller
     };
-    delete bicitallerTemp.properties;
+    // delete bicitallerTemp.properties;
     // return this.http.put(`${this.url}/bicitalleres/${bicitaller.properties.id}.json`,bicitallerTemp)
   }
 
   obtenerBicitalleres(){
-    return this.http.get(`${this.url}/bicitalleres.json`)
-    .pipe(
-      map((resp:any)=>this.crearArreglo(resp)
-
+    return this.http.get(`${this.url}/bicitalleres.json`).pipe(
+      map((resp:any)=>this.crearArreglo(resp['features'])
       )
     )
   }
@@ -50,9 +48,9 @@ private url = 'https://gregario-ee3cf.firebaseio.com/bicitalleres/features';
 
     const bicitalleres: BicitallerModel[]=[];
 
-    console.log(bicitalleresObj)
+    console.log(bicitalleresObj);
 
-    if(bicitalleresObj ===null) {return [];}
+    if (bicitalleresObj === null) {return [];}
 
     Object.keys(bicitalleresObj).forEach(key =>{
       const bicitaller: BicitallerModel= bicitalleresObj[key];
@@ -64,7 +62,7 @@ private url = 'https://gregario-ee3cf.firebaseio.com/bicitalleres/features';
   }
 
   borrarBicitaller(id:string){
-    return this.http.delete(`${this.url}/bicitalleres/${id}.json`)
+    return this.http.delete(`${this.url}/bicitalleres/${id}.json`);
   }
 
 }

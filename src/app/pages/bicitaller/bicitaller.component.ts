@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {BicitallerModel, geometry} from '../../Models/bicitaller.model'
+import { BicitallerModel, geometry, properties } from '../../Models/bicitaller.model';
 import{NgForm} from '@angular/forms'
 
 import Swal from 'sweetalert2'
@@ -15,13 +15,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BicitallerComponent implements OnInit {
 
-  bicitaller: BicitallerModel= new BicitallerModel();
+  bicitaller: BicitallerModel = new BicitallerModel();
 
-  constructor(private bicitalleresService:BicitalleresService,
-              private route:ActivatedRoute) { 
+  propiedades: properties = new properties();
 
+  geom: geometry = new geometry();
 
-
+  constructor(private bicitalleresService: BicitalleresService,
+              private route: ActivatedRoute) {
+        
               }
 
   ngOnInit(){
@@ -46,25 +48,33 @@ export class BicitallerComponent implements OnInit {
 
   }
 
-  guardar(form:NgForm){
+  guardar(form: NgForm){
 
-    if(form.invalid){
+    if (form.invalid){
       console.log('Formulario no valido');
       return;
     }
-
+/*
     Swal.fire({
       title: 'Espere',
-      text:'Guardando Info',
-      icon:'info',
-      allowOutsideClick:false
+      text: 'Guardando Info',
+      icon: 'info',
+      allowOutsideClick: false
     });
     Swal.showLoading();
+*/
+    // let peticion: Observable<any>;
+    this.bicitaller.properties = this.propiedades;
+    this.bicitaller.geometry = this.geom;
+    console.log(this.bicitaller);
+    console.log(form);
 
-   let peticion:Observable<any>;
+    this.bicitalleresService.crearBicitaller(this.bicitaller)
+      .subscribe( resp => {
+        console.log(resp);
+      });
 
-
-   peticion=this.bicitalleresService.crearBicitaller(this.bicitaller);
+    // peticion = this.bicitalleresService.crearBicitaller(this.bicitaller);
 
 //     if(this.bicitaller.id){
 
@@ -76,13 +86,13 @@ export class BicitallerComponent implements OnInit {
 
 //     }
 
-    peticion.subscribe(resp=>{
+/*    peticion.subscribe(resp=>{
       Swal.fire({
-        title: this.bicitaller.properties.referencia,
+        title: 'Actualizado', // this.bicitaller.properties.referencia,
         text: 'Se actualizó Correctamente',
         icon:'success'
       })
-    })
+    })*/
 
   }
 
