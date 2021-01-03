@@ -29,8 +29,8 @@ private url = 'https://gregario-ee3cf.firebaseio.com';
     const bicitallerTemp={
       ...bicitaller
     };
-    // delete bicitallerTemp.properties;
-    // return this.http.put(`${this.url}/bicitalleres/${bicitaller.properties.id}.json`,bicitallerTemp)
+    // delete bicitallerTemp.id;
+    // return this.http.put(`${this.url}/bicitalleres/features/${bicitaller.id}.json`,bicitallerTemp)
   }
 
   obtenerBicitalleres(){

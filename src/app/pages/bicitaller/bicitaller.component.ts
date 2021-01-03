@@ -52,9 +52,15 @@ export class BicitallerComponent implements OnInit {
 
     if (form.invalid){
       console.log('Formulario no valido');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Formulario no valido, llene todos los campos',
+        // footer: '<a href>Why do I have this issue?</a>'
+      });
       return;
     }
-/*
+
     Swal.fire({
       title: 'Espere',
       text: 'Guardando Info',
@@ -62,19 +68,19 @@ export class BicitallerComponent implements OnInit {
       allowOutsideClick: false
     });
     Swal.showLoading();
-*/
-    // let peticion: Observable<any>;
+
+    let peticion: Observable<any>;
     this.bicitaller.properties = this.propiedades;
     this.bicitaller.geometry = this.geom;
     console.log(this.bicitaller);
     console.log(form);
 
-    this.bicitalleresService.crearBicitaller(this.bicitaller)
+    /*this.bicitalleresService.crearBicitaller(this.bicitaller)
       .subscribe( resp => {
         console.log(resp);
-      });
+      });*/
 
-    // peticion = this.bicitalleresService.crearBicitaller(this.bicitaller);
+    peticion = this.bicitalleresService.crearBicitaller(this.bicitaller);
 
 //     if(this.bicitaller.id){
 
@@ -86,13 +92,14 @@ export class BicitallerComponent implements OnInit {
 
 //     }
 
-/*    peticion.subscribe(resp=>{
+    peticion.subscribe(resp=>{
       Swal.fire({
         title: 'Actualizado', // this.bicitaller.properties.referencia,
         text: 'Se actualizó Correctamente',
         icon:'success'
       })
-    })*/
+      form.reset();
+    })
 
   }
 
